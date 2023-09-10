@@ -48,6 +48,28 @@ public class UserService implements IUser {
         return this.userRepository.save(newUser);
     }
 
+    @Transactional
+    public User update(Long id, User userToUpdate) {
+        this.validateChangeableId(id, "updated");
+        User userDB = this.findById(id);
+        if (!userDB.getId().equals(userToUpdate.getId())) {
+            throw new BusinessException("Update IDs must be the same.");
+        }
+        userDB.setName(userToUpdate.getName());
+        userDB.setAccount(userToUpdate.getAccount());
+        userDB.setCard(userToUpdate.getCard());
+        userDB.setFeatures(userToUpdate.getFeatures());
+        userDB.setNews(userToUpdate.getNews());
+        return this.userRepository.save(userDB);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        this.validateChangeableId(id, "deleted");
+        User userDB = this.findById(id);
+        this.userRepository.delete(userDB);
+    }
+
     private void validateChangeableId(Long id, String operation) {
         if (FIXED_ID.equals(id)) {
             throw new BusinessException("User with ID %d can not be %s.".formatted(FIXED_ID, operation));
