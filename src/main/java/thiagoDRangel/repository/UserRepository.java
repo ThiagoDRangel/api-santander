@@ -7,4 +7,6 @@ import thiagoDRangel.models.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByAccountNumber(String accountNumber);
+
+    // boolean existsCardNumber(String number);
 }
