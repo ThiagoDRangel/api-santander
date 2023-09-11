@@ -1,18 +1,16 @@
 package thiagoDRangel.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-@MappedSuperclass
-public abstract class BaseInvestments {
+@Entity
+public class Investments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String type;
+    private List<String> types;
     private BigDecimal amount;
 
     public Long getId() {
@@ -23,12 +21,12 @@ public abstract class BaseInvestments {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public List<String> getTypes() {
+        return types;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypes(List<String> types) {
+        this.types = types;
     }
 
     public BigDecimal getAmount() {
