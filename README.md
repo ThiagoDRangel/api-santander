@@ -49,12 +49,12 @@ classDiagram
     User "1" *-- "1" Card
     User "1" *-- "N" News
     User "1" *-- "N" Investment
-    Investment <|-- TreasuryDirect
-    Investment <|-- Stocks
-    Investment <|-- Cryptocurrencies
-    Investment <|-- Savings
-    Investment <|-- GovernmentBonds
-    Investment <|-- CorporateBonds
+    Investment "1" *-- "N" TreasuryDirect
+    Investment "1" *-- "N" Stocks
+    Investment "1" *-- "N" Cryptocurrencies
+    Investment "1" *-- "N" Savings
+    Investment "1" *-- "N" GovernmentBonds
+    Investment "1" *-- "N" CorporateBonds
 
 
 ```
