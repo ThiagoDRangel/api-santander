@@ -14,6 +14,7 @@ classDiagram
         - features: Feature[]
         - card: Card
         - news: News[]
+        - investments: Investment[]
     }
     
     class Account {
@@ -38,10 +39,23 @@ classDiagram
         - description: String
     }
 
+    class Investment {
+        - type: String
+        - amount: Number
+    }
+    
     User "1" *-- "1" Account
     User "1" *-- "N" Feature
     User "1" *-- "1" Card
     User "1" *-- "N" News
+    User "1" *-- "N" Investment
+    Investment <|-- TreasuryDirect
+    Investment <|-- Stocks
+    Investment <|-- Cryptocurrencies
+    Investment <|-- Savings
+    Investment <|-- GovernmentBonds
+    Investment <|-- CorporateBonds
+
 
 ```
 
